@@ -5,8 +5,8 @@ services:
     build: ./code-belt3
     depends_on:
       - cassandradb
-	  args:
-        JAR_FILE: /spring-boot-cassandra-0.0.1-SNAPSHOT.jar   
+    args:
+      JAR_FILE: /spring-boot-cassandra-0.0.1-SNAPSHOT.jar   
     networks:
       - network-backend
       - network-frontend
@@ -24,15 +24,13 @@ services:
 
   cassandradb:
     image: cassandra:3.11.8
-	container_name: cass1
+    container_name: cass1
     hostname: cass1
-	 ports:
+    ports:
       - "9042:9042"  # Expose native binary CQL port for your apps
     volumes:
       - ./data/cass1:/var/lib/cassandra    # This is the volume that will persist data for cassandra node
       - ./etc/cass1:/etc/cassandra   # Use your own config files for full control
-	  
-	  
-	  
+      
     networks:
-      - network-backend
+     - network-backend
